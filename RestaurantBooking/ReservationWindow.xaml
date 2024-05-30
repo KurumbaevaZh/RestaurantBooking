@@ -1,0 +1,51 @@
+﻿<Window x:Class="RestaurantBooking.ReservationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RestaurantBooking"
+        mc:Ignorable="d"
+        Title="Бронирование стола" Height="450" Width="800"
+        Loaded="Window_Loaded" Closed="Window_Closed">
+   <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <Label Content="Дата" Margin="0,0,0,10" />
+            <DatePicker x:Name="DateDatePicker" Margin="0,0,0,10" />
+
+            <Label Content="Время" Margin="0,0,0,10" />
+            <ComboBox x:Name="TimeComboBox" Margin="0,0,0,10">
+                <ComboBoxItem Content="9:00" />
+                <ComboBoxItem Content="10:00" />
+                <ComboBoxItem Content="11:00" />
+                <ComboBoxItem Content="12:00" />
+                <ComboBoxItem Content="13:00" />
+                <ComboBoxItem Content="14:00" />
+                <ComboBoxItem Content="15:00" />
+                <ComboBoxItem Content="16:00" />
+                <ComboBoxItem Content="17:00" />
+                <ComboBoxItem Content="18:00" />
+                <ComboBoxItem Content="19:00" />
+                <ComboBoxItem Content="20:00" />
+            </ComboBox>
+
+            <Label Content="Количество людей" Margin="0,0,0,10" />
+            <TextBox x:Name="PeopleCountTextBox" Margin="0,0,0,10" />
+            <Button x:Name="SearchButton" Content="Поиск" Margin="0,0,0,10" Click="SearchButton_Click" />
+            <Button x:Name="BookButton" Content="Забронировать" Margin="0,0,0,10" Click="BookButton_Click" />
+            <TextBlock x:Name="BookingMessageTextBlock" Margin="0,10,0,0" Foreground="Green"/>
+        </StackPanel>
+
+        <DataGrid x:Name="TablesDataGrid" Grid.Row="1" AutoGenerateColumns="False" Margin="0,10,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер Стола" Binding="{Binding TableId}" />
+                <DataGridTextColumn Header="Количество мест" Binding="{Binding Capacity}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
+
